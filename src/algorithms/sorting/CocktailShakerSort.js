@@ -1,7 +1,7 @@
 import Sort from '../Sort';
 
 export default class CocktailShakerSort extends Sort {
-  sort(originalArray){
+  sort(originalArray) {
     // Flag that holds info about whether the swap has occur or not.
     let swapped = true;
     // Clone original array to prevent its modification.
@@ -10,17 +10,17 @@ export default class CocktailShakerSort extends Sort {
     let start = 0;
     let end = array.length;
 
-    while (swapped){
+    while (swapped) {
       // Reset the swapped flag on entering the loop,
       // because it might be true from a previous iteration.
       swapped = false;
 
       // Loop forward same as the bubble sort
-      for (let i = start; i < end - 1; i += 1){
+      for (let i = start; i < end - 1; i += 1) {
         // Call visiting callback.
         this.callbacks.visitingCallback(array[i]);
 
-        if (this.comparator.greaterThan(array[i], array[i + 1])){
+        if (this.comparator.greaterThan(array[i], array[i + 1])) {
           [array[i], array[i + 1]] = [array[i + 1], array[i]];
           swapped = true;
         }
@@ -31,7 +31,7 @@ export default class CocktailShakerSort extends Sort {
       end -= 1;
 
       // If nothing swapped, then array is sorted.
-      if (swapped === false){
+      if (swapped === false) {
         break;
       }
       
@@ -39,11 +39,11 @@ export default class CocktailShakerSort extends Sort {
       swapped = false;
 
       // Loop backward, doing the same comparison as in the previous stage
-      for (let i = end - 1; i >= start; i -= 1){
+      for (let i = end - 1; i >= start; i -= 1) {
         // Call visiting callback.
         this.callbacks.visitingCallback(array[i]);
 
-        if (this.comparator.greaterThan(array[i], array[i + 1])){
+        if (this.comparator.greaterThan(array[i], array[i + 1])) {
           [array[i], array[i + 1]] = [array[i + 1], array[i]];
           swapped = true;
         }
